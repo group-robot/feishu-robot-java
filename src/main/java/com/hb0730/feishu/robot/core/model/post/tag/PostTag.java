@@ -1,4 +1,4 @@
-package com.hb0730.feishu.robot.core.model.tag;
+package com.hb0730.feishu.robot.core.model.post.tag;
 
 import com.hb0730.feishu.robot.core.model.IMessage;
 
@@ -10,8 +10,8 @@ import java.util.Map;
  * @author bing_huang
  * @date 2021/12/16
  */
-public abstract class BaseTag implements IMessage {
-    public BaseTag() {
+public abstract class PostTag implements IMessage {
+    public PostTag() {
         setTag();
     }
 

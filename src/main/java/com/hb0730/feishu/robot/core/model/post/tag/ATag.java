@@ -1,4 +1,4 @@
-package com.hb0730.feishu.robot.core.model.tag;
+package com.hb0730.feishu.robot.core.model.post.tag;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Setter
 @Getter
 @Builder
-public class ATag extends BaseTag {
+public class ATag extends PostTag {
     /**
      * 文本内容
      */

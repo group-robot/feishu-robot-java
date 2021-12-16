@@ -16,6 +16,15 @@ import java.util.Map;
 @Getter
 @Setter
 public class CardTitle implements IMessage {
+    /**
+     * create {@link  CardTitle}
+     *
+     * @return {@link  CardTitle}
+     */
+    public static CardTitle build() {
+        return new CardTitle();
+    }
+
     public CardTitle() {
         this(new HashMap<>());
     }
@@ -31,10 +40,11 @@ public class CardTitle implements IMessage {
 
     /**
      * set content
+     *
      * @param content content
      * @return this
      */
-    private CardTitle content(String content) {
+    public CardTitle content(String content) {
         this.content = content;
         return this;
     }

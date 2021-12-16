@@ -1,9 +1,9 @@
 package com.hb0730.feishu.robot.core.model.post;
 
-import com.hb0730.feishu.robot.core.model.tag.ATag;
-import com.hb0730.feishu.robot.core.model.tag.AtTag;
-import com.hb0730.feishu.robot.core.model.tag.ImgTag;
-import com.hb0730.feishu.robot.core.model.tag.TextTag;
+import com.hb0730.feishu.robot.core.model.post.tag.ATag;
+import com.hb0730.feishu.robot.core.model.post.tag.AtTag;
+import com.hb0730.feishu.robot.core.model.post.tag.ImgTag;
+import com.hb0730.feishu.robot.core.model.post.tag.TextTag;
 import com.hb0730.feishu.robot.core.util.JacksonUtils;
 import org.junit.Test;
 
