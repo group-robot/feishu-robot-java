@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 8
+          distribution: "adopt"
       - name: Release Maven Package
         uses: samuelmeuli/action-maven-publish@v1
         with:
