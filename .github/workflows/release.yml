@@ -18,6 +18,7 @@ jobs:
       - name: Release Maven Package
         uses: samuelmeuli/action-maven-publish@v1
         with:
+          maven_args: "-Dmaven.test.skip=true"
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
           nexus_username: ${{ secrets.NEXUS_USERNAME }}
