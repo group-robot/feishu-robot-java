@@ -37,6 +37,22 @@ public class InteractiveMessage extends BaseMessage {
     }
 
     /**
+     * json结构化，与其他任何属性互斥
+     */
+    private String cardJsonStr;
+
+    /**
+     * set InteractiveMessage json str
+     *
+     * @param cardJsonStr json str
+     * @return this
+     */
+    public InteractiveMessage cardJsonStr(String cardJsonStr) {
+        this.cardJsonStr = cardJsonStr;
+        return this;
+    }
+
+    /**
      * 用于描述卡片的功能属性。
      */
     private CardConfig config;
@@ -207,7 +223,11 @@ public class InteractiveMessage extends BaseMessage {
 
         Map<String, Object> message = new HashMap<>();
         message.put("msg_type", msgType.getValue());
-        message.put("card", cardMessage);
+        if (this.cardJsonStr != null) {
+            message.put("card", this.cardJsonStr);
+        } else {
+            message.put("card", cardMessage);
+        }
         return message;
     }
 }
