@@ -1,6 +1,6 @@
 package com.hb0730.feishu.robot.core.model.post;
 
-import com.hb0730.feishu.robot.core.model.tag.BaseTag;
+import com.hb0730.feishu.robot.core.model.post.tag.PostTag;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +21,7 @@ public class PostTags {
     /**
      * tag集合
      */
-    private List<BaseTag> tags;
+    private List<PostTag> tags;
 
     /**
      * 构建 {@link  PostTags}
@@ -36,16 +36,16 @@ public class PostTags {
         this(new ArrayList<>());
     }
 
-    public PostTags(List<BaseTag> tags) {
+    public PostTags(List<PostTag> tags) {
         this.tags = tags;
     }
 
-    public PostTags addTags(BaseTag... postTags) {
+    public PostTags addTags(PostTag... postTags) {
         this.tags.addAll(Arrays.asList(postTags));
         return this;
     }
 
-    public PostTags addTag(BaseTag postTag) {
+    public PostTags addTag(PostTag postTag) {
         this.tags.add(postTag);
         return this;
     }
@@ -57,7 +57,7 @@ public class PostTags {
      */
     public List<Map<String, Object>> toMessage() {
         List<Map<String, Object>> messageMap = new ArrayList<>(this.tags.size());
-        for (BaseTag tag : this.tags) {
+        for (PostTag tag : this.tags) {
             messageMap.add(tag.toMessage());
         }
         return messageMap;

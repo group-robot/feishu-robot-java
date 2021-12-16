@@ -5,12 +5,10 @@ import com.hb0730.feishu.robot.core.RobotSend;
 import com.hb0730.feishu.robot.core.model.post.PostLang;
 import com.hb0730.feishu.robot.core.model.post.PostTags;
 import com.hb0730.feishu.robot.core.model.post.PostUnit;
-import com.hb0730.feishu.robot.core.model.tag.ATag;
-import com.hb0730.feishu.robot.core.model.tag.AtTag;
-import com.hb0730.feishu.robot.core.model.tag.TextTag;
+import com.hb0730.feishu.robot.core.model.post.tag.ATag;
+import com.hb0730.feishu.robot.core.model.post.tag.AtTag;
+import com.hb0730.feishu.robot.core.model.post.tag.TextTag;
 import org.junit.Test;
-
-import java.util.Map;
 
 public class PostMessageTest {
 

@@ -1,4 +1,4 @@
-package com.hb0730.feishu.robot.core.model.tag;
+package com.hb0730.feishu.robot.core.model.post.tag;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class ImgTag extends BaseTag {
+public class ImgTag extends PostTag {
     /**
      * 图片的唯一标识
      */
