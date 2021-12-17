@@ -26,9 +26,8 @@ jobs:
              echo "PRERELEASE=true" >> $GITHUB_ENV
           fi
            echo ${{ steps.get-prerelease-tag.outputs.PRERELEASE }}
-          echo "${{ env.PRERELEASE }}"
-          echo ${{ env.PRERELEASE }}
-          echo ${{ steps.get-prerelease-tag.outputs.PRERELEASE==true}}
+          echo $env.PRERELEASE
+          echo $steps.get-prerelease-tag.outputs.PRERELEASE==true
       - name: Automatic Release
         uses: marvinpinto/action-automatic-releases@latest
         with:
