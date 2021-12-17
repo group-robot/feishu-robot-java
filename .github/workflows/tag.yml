@@ -24,9 +24,9 @@ jobs:
              echo "test"
              echo "TAG_PRERELEASE=true" >> $GITHUB_ENV
           fi
-             echo "${{ env.TAG_PRERELEASE }}"
+             echo "$TAG_PRERELEASE"
       - name: Automatic Release
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: "${{env.TAG_PRERELEASE == true }}"
+          prerelease: "${{env.TAG_PRERELEASE}}"
