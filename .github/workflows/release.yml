@@ -1,10 +1,9 @@
-name: Maven Release
-
+name: Tag Release
 on:
-  release:
-    types:
-      - prereleased
-      - released
+  push:
+    tags:
+      - "[1-9]+.[0-9]+.[0-9].RELEASE"
+      - "[1-9]+.[0-9]+.[0-9]-beta.+[0-9]"
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -13,8 +12,11 @@ jobs:
       - name: Set up JDK 8
         uses: actions/setup-java@v2
         with:
-          java-version: 8
-          distribution: "adopt"
+          java-version: '8'
+          distribution: 'adopt'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml -Dmaven.test.skip=true
       - name: Release Maven Package
         uses: samuelmeuli/action-maven-publish@v1
         with:
@@ -25,4 +27,14 @@ jobs:
           nexus_password: ${{ secrets.NEXUS_PASSWORD }}
           maven_profiles: "release"
           server_id: "sonatype-nexus-snapshots"
-
+      - name: Get Tag Of Prerelease
+        id: get-prerelease-tag
+        run: |
+          if [[ ${{ github.event.ref }} =~ ^refs/tags/[1-9]+\.[0-9]+\.[0-9]-beta\.+[0-9] ]]; then
+             echo "TAG_PRERELEASE=true" >> $GITHUB_ENV
+          fi
+      - name: Automatic Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: "${{env.TAG_PRERELEASE}}"
