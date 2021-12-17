@@ -20,10 +20,10 @@ jobs:
       - name: Get Tag Of Prerelease
         id: get_prerelease_tag
         run: |
-          echo ${{github.event.ref}}
           if [[ ${{ github.event.ref }} =~ ^refs/tags/[1-9]+.[0.9]+.[0-9]-beta+.[0-9]+$ ]]; then 
               echo "PRERELEASE=true" >> $GITHUB_ENV
           fi
+          echo ${{env.PRERELEASE==true}}
       - name: Automatic Release
         uses: marvinpinto/action-automatic-releases@latest
         with:
