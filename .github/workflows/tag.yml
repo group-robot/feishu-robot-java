@@ -3,7 +3,7 @@ on:
   push:
     tags:
       - "[1-9]+.[0-9]+.[0-9].RELEASE"
-      - "[1-9]+.[0-9]+.[0-9]-beta.[0-9]"
+      - "[1-9]+.[0-9]+.[0-9]-beta.+[0-9]"
 jobs:
   release:
     runs-on: ubuntu-latest
