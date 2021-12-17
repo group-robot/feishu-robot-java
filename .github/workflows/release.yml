@@ -32,6 +32,8 @@ jobs:
         run: |
           if [[ ${{ github.event.ref }} =~ ^refs/tags/[1-9]+\.[0-9]+\.[0-9]-beta\.+[0-9] ]]; then
              echo "TAG_PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "TAG_PRERELEASE=false" >> $GITHUB_ENV
           fi
       - name: Automatic Release
         uses: marvinpinto/action-automatic-releases@latest

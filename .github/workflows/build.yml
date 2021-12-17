@@ -6,6 +6,7 @@ on:
     paths:
       - "**"
       - "!**.yml"
+      - "!**.md"
   pull_request:
     branches:
       - main
