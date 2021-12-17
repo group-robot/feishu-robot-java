@@ -1,6 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.components;
 
-import com.hb0730.feishu.robot.core.Tag;
+import com.hb0730.feishu.robot.core.model.Tag;
 import com.hb0730.feishu.robot.core.model.IMessage;
 import lombok.Builder;
 import lombok.Getter;

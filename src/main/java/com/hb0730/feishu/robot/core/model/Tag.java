@@ -1,4 +1,4 @@
-package com.hb0730.feishu.robot.core;
+package com.hb0730.feishu.robot.core.model;
 
 /**
  * tag 标签

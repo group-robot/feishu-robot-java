@@ -1,6 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.components;
 
-import com.hb0730.feishu.robot.core.Tag;
+import com.hb0730.feishu.robot.core.model.Tag;
 import com.hb0730.feishu.robot.core.constants.ActionLayout;
 import com.hb0730.feishu.robot.core.model.IMessage;
 import com.hb0730.feishu.robot.core.model.interactive.components.action.ActionComponent;

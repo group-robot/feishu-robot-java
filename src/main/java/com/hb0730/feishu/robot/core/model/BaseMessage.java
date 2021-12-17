@@ -24,12 +24,17 @@ public abstract class BaseMessage implements IMessage {
      */
     protected MessageType msgType;
 
+    /**
+     * get message type
+     *
+     * @return message type
+     */
     public MessageType getMsgType() {
         return this.msgType;
     }
 
     /**
-     * 初始化MmessageType方法
+     * 初始化MessageType等
      */
     protected abstract void init();
 }
