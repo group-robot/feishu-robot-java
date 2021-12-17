@@ -21,6 +21,9 @@ import java.util.Map;
 @Getter
 @Setter
 public class Button extends ActionComponent {
+
+    private final String tag = "button";
+
     /**
      * create Button
      *
@@ -38,7 +41,6 @@ public class Button extends ActionComponent {
         this.value = value;
     }
 
-    private final String tag = "button";
     /**
      * 按钮中的文本
      */
@@ -149,7 +151,7 @@ public class Button extends ActionComponent {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>(2);
+        Map<String, Object> message = new HashMap<>(4);
         message.put("tag", this.tag);
         message.put("text", this.text.toMessage());
         message.put("url", this.url);
@@ -158,7 +160,7 @@ public class Button extends ActionComponent {
         }
 
         message.put("type", this.type == null ? ButtonType.DEFAULT.getValue() : this.type.getValue());
-        if (!value.isEmpty()) {
+        if (!this.value.isEmpty()) {
             message.put("value", JacksonUtils.X.format(this.value));
         }
         if (null != this.confirm) {

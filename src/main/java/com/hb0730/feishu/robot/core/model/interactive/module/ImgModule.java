@@ -1,8 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.module;
 
-import com.hb0730.feishu.robot.core.Tag;
 import com.hb0730.feishu.robot.core.constants.ImgMode;
-import com.hb0730.feishu.robot.core.model.IMessage;
 import com.hb0730.feishu.robot.core.model.interactive.components.Text;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +18,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class Img extends AbstractModule {
+public class ImgModule extends AbstractModule {
     private final String tag = "img";
     /**
      * 图片资源
@@ -43,7 +41,7 @@ public class Img extends AbstractModule {
      */
     private Boolean compactWidth;
     /**
-     * 图片显示模式。
+     * 图片显示模式。"crop_center"（默认值）
      */
     private ImgMode mode;
     /**
@@ -58,18 +56,20 @@ public class Img extends AbstractModule {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>(3);
+        Map<String, Object> message = new HashMap<>(4);
         message.put("tag", tag());
         message.put("img_key", this.imgKey);
         message.put("alt", this.alt.toMessage());
         if (null != this.title) {
             message.put("title", this.title.toMessage());
         }
-        message.put("custom_width", this.compactWidth);
-        message.put("compact_width", this.compactWidth);
-        if (null != this.mode) {
-            message.put("mod", this.mode.getValue());
+        if (null != this.customWidth) {
+            message.put("custom_width", this.customWidth);
         }
+        if (null != this.compactWidth) {
+            message.put("compact_width", this.compactWidth);
+        }
+        message.put("mod", this.mode == null ? ImgMode.CROP_CENTER : this.mode);
         if (null != this.preview) {
             message.put("preview", this.preview);
         }

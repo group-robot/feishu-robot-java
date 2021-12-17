@@ -168,7 +168,7 @@ public class DatePicker extends ActionComponent {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>(2);
+        Map<String, Object> message = new HashMap<>(4);
         message.put("tag", this.tag.getValue());
         message.put("initial_date", this.initialDate);
         message.put("initial_time", this.initialTime);

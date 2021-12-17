@@ -20,6 +20,27 @@ import java.util.Map;
 @Builder
 public class Url implements IMessage {
     /**
+     * create {@link  Url}
+     */
+    public Url() {
+    }
+
+    /**
+     * create {@link  Url}
+     *
+     * @param url        默认的链接地址
+     * @param androidUrl Android 端的链接地址
+     * @param iosUrl     iOS 端的链接地址
+     * @param pcUrl      PC 端的链接地址
+     */
+    public Url(String url, String androidUrl, String iosUrl, String pcUrl) {
+        this.url = url;
+        this.androidUrl = androidUrl;
+        this.iosUrl = iosUrl;
+        this.pcUrl = pcUrl;
+    }
+
+    /**
      * 默认的链接地址
      */
     private String url;

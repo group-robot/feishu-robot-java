@@ -17,23 +17,23 @@ import java.util.Map;
  * @author bing_huang
  * @date 2021/12/16
  */
-public class Note extends AbstractModule {
+public class NoteModule extends AbstractModule {
     private final String tag = "note";
 
     /**
-     * create {@link  Note}
+     * create {@link  NoteModule}
      *
-     * @return {@link  Note}
+     * @return {@link  NoteModule}
      */
-    public static Note build() {
-        return new Note();
+    public static NoteModule build() {
+        return new NoteModule();
     }
 
-    public Note() {
+    public NoteModule() {
         this(new ArrayList<>());
     }
 
-    public Note(List<IMessage> elements) {
+    public NoteModule(List<IMessage> elements) {
         this.elements = elements;
     }
 
@@ -48,7 +48,7 @@ public class Note extends AbstractModule {
      * @param elements elements
      * @return this
      */
-    public Note elements(List<IMessage> elements) {
+    public NoteModule elements(List<IMessage> elements) {
         this.elements = elements;
         return this;
     }
@@ -59,7 +59,7 @@ public class Note extends AbstractModule {
      * @param elements elements
      * @return this
      */
-    public Note addElement(IMessage... elements) {
+    public NoteModule addElement(IMessage... elements) {
         this.elements.addAll(Arrays.asList(elements));
         return this;
     }
@@ -70,7 +70,7 @@ public class Note extends AbstractModule {
      * @param element element
      * @return this
      */
-    public Note addElement(IMessage element) {
+    public NoteModule addElement(IMessage element) {
         this.elements.add(element);
         return this;
     }

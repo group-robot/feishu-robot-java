@@ -1,5 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.components;
 
+import com.hb0730.feishu.robot.core.Tag;
 import com.hb0730.feishu.robot.core.model.IMessage;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class Image implements IMessage {
+public class Image implements IMessage, Tag {
     private final String tag = "img";
     /**
      * 图片资源
@@ -41,5 +42,10 @@ public class Image implements IMessage {
         message.put("alt", this.alt.toMessage());
         message.put("preview", this.preview);
         return message;
+    }
+
+    @Override
+    public String tag() {
+        return this.tag;
     }
 }

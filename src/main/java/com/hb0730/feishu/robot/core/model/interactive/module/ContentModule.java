@@ -23,21 +23,23 @@ import java.util.Map;
  */
 @Getter
 @Setter
-public class Content extends AbstractModule {
+public class ContentModule extends AbstractModule {
+    private final String tag = "div";
+
     /**
-     * create {@link  Content}
+     * create {@link  ContentModule}
      *
-     * @return {@link  Content}
+     * @return {@link  ContentModule}
      */
-    public static Content build() {
-        return new Content();
+    public static ContentModule build() {
+        return new ContentModule();
     }
 
-    public Content() {
+    public ContentModule() {
         this(new ArrayList<>());
     }
 
-    public Content(List<Field> fields) {
+    public ContentModule(List<Field> fields) {
         this.fields = fields;
     }
 
@@ -52,7 +54,7 @@ public class Content extends AbstractModule {
      * @param text text
      * @return this
      */
-    public Content text(Text text) {
+    public ContentModule text(Text text) {
         this.text = text;
         return this;
     }
@@ -68,7 +70,7 @@ public class Content extends AbstractModule {
      * @param fields fields
      * @return this
      */
-    public Content fields(List<Field> fields) {
+    public ContentModule fields(List<Field> fields) {
         this.fields = fields;
         return this;
     }
@@ -79,7 +81,7 @@ public class Content extends AbstractModule {
      * @param fields fields
      * @return this
      */
-    public Content addField(Field... fields) {
+    public ContentModule addField(Field... fields) {
         this.fields.addAll(Arrays.asList(fields));
         return this;
     }
@@ -90,7 +92,7 @@ public class Content extends AbstractModule {
      * @param field field
      * @return this
      */
-    public Content addField(Field field) {
+    public ContentModule addField(Field field) {
         this.fields.add(field);
         return this;
     }
@@ -106,14 +108,14 @@ public class Content extends AbstractModule {
      * @param extra extra
      * @return this
      */
-    public Content extra(IMessage extra) {
+    public ContentModule extra(IMessage extra) {
         this.extra = extra;
         return this;
     }
 
     @Override
     public String tag() {
-        return "div";
+        return tag;
     }
 
     @Override

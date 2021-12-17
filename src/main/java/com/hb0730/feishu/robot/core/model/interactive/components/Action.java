@@ -1,5 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.components;
 
+import com.hb0730.feishu.robot.core.Tag;
 import com.hb0730.feishu.robot.core.constants.ActionLayout;
 import com.hb0730.feishu.robot.core.model.IMessage;
 import com.hb0730.feishu.robot.core.model.interactive.components.action.ActionComponent;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 @Getter
 @Setter
-public class Action implements IMessage {
+public class Action implements IMessage, Tag {
     private final String tag = "action";
 
     /**
@@ -96,7 +97,7 @@ public class Action implements IMessage {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>();
+        Map<String, Object> message = new HashMap<>(2);
         message.put("tag", this.tag);
         List<Map<String, Object>> actions = new ArrayList<>(this.actions.size());
         for (ActionComponent action : this.actions) {
@@ -108,5 +109,10 @@ public class Action implements IMessage {
         }
 
         return message;
+    }
+
+    @Override
+    public String tag() {
+        return this.tag;
     }
 }

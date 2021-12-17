@@ -162,7 +162,7 @@ public class SelectMenu extends ActionComponent {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>(1);
+        Map<String, Object> message = new HashMap<>(2);
         message.put("tag", this.tag.getValue());
         if (null != this.placeholder) {
             message.put("placeholder", this.placeholder.toMessage());

@@ -1,5 +1,6 @@
 package com.hb0730.feishu.robot.core.model.interactive.components;
 
+import com.hb0730.feishu.robot.core.Tag;
 import com.hb0730.feishu.robot.core.constants.TextTag;
 import com.hb0730.feishu.robot.core.model.IMessage;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class Text implements IMessage {
+public class Text implements IMessage, Tag {
     /**
      * 元素标签
      */
@@ -42,4 +43,8 @@ public class Text implements IMessage {
         return message;
     }
 
+    @Override
+    public String tag() {
+        return this.tag.getValue();
+    }
 }

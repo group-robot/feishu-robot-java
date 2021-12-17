@@ -22,11 +22,11 @@ import java.util.Map;
 @Builder
 public class Confirm implements IMessage {
     /**
-     * 弹框标题
+     * 弹框标题,仅支持"plain_text"
      */
     private Text title;
     /**
-     * 弹框内容
+     * 弹框内容,仅支持"plain_text"
      */
     private Text text;
 

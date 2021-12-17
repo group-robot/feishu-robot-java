@@ -1,7 +1,5 @@
 package com.hb0730.feishu.robot.core.model.interactive.module;
 
-import com.hb0730.feishu.robot.core.Tag;
-import com.hb0730.feishu.robot.core.model.IMessage;
 import lombok.Builder;
 
 import java.util.HashMap;
@@ -14,7 +12,7 @@ import java.util.Map;
  * @date 2021/12/16
  */
 @Builder
-public class Hr extends AbstractModule {
+public class HrModule extends AbstractModule {
     private final String tag = "hr";
 
     @Override

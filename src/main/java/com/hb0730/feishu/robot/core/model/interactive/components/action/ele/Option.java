@@ -39,8 +39,10 @@ public class Option implements IMessage {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> message = new HashMap<>(4);
-        message.put("text", this.text.toMessage());
+        Map<String, Object> message = new HashMap<>(1);
+        if (null != this.text) {
+            message.put("text", this.text.toMessage());
+        }
         message.put("value", this.value);
         message.put("url", this.url);
         if (null != this.multiUrl) {

@@ -1,7 +1,5 @@
 package com.hb0730.feishu.robot.core.model.interactive.module;
 
-import com.hb0730.feishu.robot.core.Tag;
-import com.hb0730.feishu.robot.core.model.IMessage;
 import com.hb0730.feishu.robot.core.model.interactive.components.action.ele.Url;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +17,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-public class Markdown extends AbstractModule{
+public class MarkdownModule extends AbstractModule{
     private final String tag = "markdown";
     /**
      * 使用已支持的markdown语法构造markdown内容
