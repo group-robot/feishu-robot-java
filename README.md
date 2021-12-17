@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://github.com/hb0730/feishu-robot-core" target="_blank">feishu-robot-core</a></h1>
+<h1 align="center"><a href="https://github.com/hb0730/java-feishu-robot" target="_blank">feishu-robot-core</a></h1>
 <p align="center">
 <a href="https://search.maven.org/artifact/com.hb0730/feishu-robot-core">
 <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.hb0730/feishu-robot-core?style=flat-square">
