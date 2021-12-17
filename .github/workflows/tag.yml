@@ -21,7 +21,7 @@ jobs:
         id: get-prerelease-tag
         run: |
           if [[ ${{ github.event.ref }} =~ ^refs/tags/[1-9]+\.[0-9]+\.[0-9]-beta\.+[0-9]+$ ]]; then
-             echo ::set-output name=PRERELEASE::true
+             echo "::set-output name=PRERELEASE::true"
           fi
            echo ${{ steps.get-prerelease-tag.outputs.PRERELEASE }}
           echo ${{ steps.get-prerelease-tag.outputs.PRERELEASE==true}}
