@@ -32,14 +32,14 @@ public class ImgTag extends PostTag {
 
 
     @Override
-    protected void setTag() {
-        this.tag = "img";
+    public String tag() {
+        return "img";
     }
 
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> imgMap = new HashMap<>(4);
-        imgMap.put("tag", getTag());
+        imgMap.put("tag", tag());
         imgMap.put("image_key", this.imageKey);
         imgMap.put("width", this.width == null ? 300 : this.width);
         imgMap.put("height", this.height == null ? 300 : this.height);

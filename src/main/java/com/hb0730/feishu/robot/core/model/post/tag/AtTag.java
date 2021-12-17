@@ -31,14 +31,14 @@ public class AtTag extends PostTag {
     private Boolean atAll;
 
     @Override
-    protected void setTag() {
-        this.tag = "at";
+    public String tag() {
+        return "at";
     }
 
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> atMap = new HashMap<>(3);
-        atMap.put("tag", getTag());
+        atMap.put("tag", tag());
         if (this.atAll) {
             atMap.put("user_name", "所有人");
             atMap.put("user_id", "all");

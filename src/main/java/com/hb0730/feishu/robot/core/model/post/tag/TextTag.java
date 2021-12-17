@@ -27,14 +27,14 @@ public class TextTag extends PostTag {
     private Boolean unEscape;
 
     @Override
-    protected void setTag() {
-        this.tag = "text";
+    public String tag() {
+        return "text";
     }
 
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> textMap = new HashMap<>(3);
-        textMap.put("tag", getTag());
+        textMap.put("tag", tag());
         textMap.put("text", this.text);
         textMap.put("un_escape", this.unEscape);
         return textMap;

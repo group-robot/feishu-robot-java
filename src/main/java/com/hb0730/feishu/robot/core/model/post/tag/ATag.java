@@ -27,14 +27,14 @@ public class ATag extends PostTag {
     private String href;
 
     @Override
-    protected void setTag() {
-       this.tag = "a";
+    public String tag() {
+        return "tag";
     }
 
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> aMap = new HashMap<>(3);
-        aMap.put("tag", getTag());
+        aMap.put("tag", tag());
         aMap.put("text", this.text);
         aMap.put("href", this.href);
         return aMap;

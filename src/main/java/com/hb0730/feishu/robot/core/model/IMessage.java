@@ -15,5 +15,5 @@ public interface IMessage extends Serializable {
      *
      * @return Map
      */
-    public abstract Map<String, Object> toMessage();
+    Map<String, Object> toMessage();
 }
