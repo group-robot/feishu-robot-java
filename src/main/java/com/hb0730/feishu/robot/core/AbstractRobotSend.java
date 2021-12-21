@@ -1,11 +1,11 @@
 package com.hb0730.feishu.robot.core;
 
-import com.hb0730.commons.http.HttpHeader;
-import com.hb0730.commons.http.Https;
-import com.hb0730.commons.http.utils.HttpSync;
 import com.hb0730.feishu.robot.core.exception.RobotException;
 import com.hb0730.feishu.robot.core.model.BaseMessage;
 import com.hb0730.feishu.robot.core.util.JacksonUtils;
+import com.hb0730.https.HttpHeader;
+import com.hb0730.https.HttpSync;
+import com.hb0730.https.Https;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;

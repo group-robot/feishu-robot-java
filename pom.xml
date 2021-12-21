@@ -48,8 +48,8 @@
     <dependencies>
         <dependency>
             <groupId>com.hb0730</groupId>
-            <artifactId>commons-http</artifactId>
-            <version>2.1.2-RELEASE</version>
+            <artifactId>https</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -72,13 +72,13 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.6</version>
+            <version>1.2.8</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.2.6</version>
+            <version>1.2.8</version>
             <optional>true</optional>
         </dependency>
         <dependency>
