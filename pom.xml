@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hb0730</groupId>
+    <groupId>io.github.group-robot</groupId>
     <artifactId>feishu-robot-core</artifactId>
     <version>1.0.1-SNAPSHOT</version>
 
@@ -11,7 +11,7 @@
 
     <name>feishu-robot-core</name>
     <description>feishu robot java version</description>
-    <url>https://github.com/hb0730/java-feishu-robot.git</url>
+    <url>https://github.com/group-robot/java-feishu-robot</url>
 
     <licenses>
         <license>
@@ -29,14 +29,14 @@
     </developers>
 
     <scm>
-        <connection>scm:git@github.com:hb0730/java-feishu-robot.git</connection>
-        <developerConnection>scm:git@github.com:hb0730/java-feishu-robot.git</developerConnection>
-        <url>https://github.com/hb0730/java-feishu-robot.git</url>
+        <connection>scm:git@github.com:group-robot/java-feishu-robot.git</connection>
+        <developerConnection>scm:git@github.com:group-robot/java-feishu-robot.git</developerConnection>
+        <url>https://github.com/group-robot/java-feishu-robot.git</url>
     </scm>
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/hb0730/java-feishu-robot/issues</url>
+        <url>https://github.com/group-robot/java-feishu-robot/issues</url>
     </issueManagement>
 
     <properties>
@@ -93,11 +93,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -168,7 +168,7 @@
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>sonatype-nexus-snapshots</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     </configuration>
                 </plugin>
