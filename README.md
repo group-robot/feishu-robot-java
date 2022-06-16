@@ -1,13 +1,13 @@
-<h1 align="center"><a href="https://github.com/hb0730/java-feishu-robot" target="_blank">feishu-robot-core</a></h1>
+<h1 align="center"><a href="https://github.com/group-robot/java-feishu-robot" target="_blank">feishu-robot-core</a></h1>
 <p align="center">
-<a href="https://search.maven.org/artifact/com.hb0730/feishu-robot-core">
-<img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.hb0730/feishu-robot-core?style=flat-square">
+<a href="https://search.maven.org/artifact/io.github.group-robot/feishu-robot-core">
+<img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.group-robot/feishu-robot-core?style=flat-square">
 </a>
-<a href="https://github.com/hb0730/java-feishu-robot/blob/master/LICENSE">
-<img alt="GitHub" src="https://img.shields.io/github/license/hb0730/java-feishu-robot?style=flat-square">
+<a href="https://github.com/group-robot/java-feishu-robot/blob/master/LICENSE">
+<img alt="GitHub" src="https://img.shields.io/github/license/group-robot/java-feishu-robot?style=flat-square">
 </a>
-<a href="https://github.com/hb0730/java-feishu-robot/actions">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/hb0730/java-feishu-robot/Tag%20Release?style=flat-square">
+<a href="https://github.com/group-robot/java-feishu-robot/actions">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/group-robot/java-feishu-robot/Tag%20Release?style=flat-square">
 </a>
 <a href="https://www.oracle.com/java/technologies/javase-downloads.html">
 <img alt="jdk" src="https://img.shields.io/badge/jdk-8%2B-green?style=flat-square">
@@ -18,7 +18,7 @@
 
 ```xml
 <dependency>
-    <groupId>com.hb0730</groupId>
+    <groupId>io.github.group-robot</groupId>
     <artifactId>feishu-robot-core</artifactId>
     <version>${version}</version>
 </dependency>
