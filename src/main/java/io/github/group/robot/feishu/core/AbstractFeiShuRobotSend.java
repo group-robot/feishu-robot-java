@@ -28,28 +28,47 @@ import java.util.Map;
 @Setter
 @Getter
 @Slf4j
-public abstract class AbstractRobotSend implements IRobotSend {
-    private final static Logger LOGGER = LoggerFactory.getLogger(AbstractRobotSend.class);
+public abstract class AbstractFeiShuRobotSend implements IFeiShuRobotSend {
+    private final static Logger LOGGER = LoggerFactory.getLogger(AbstractFeiShuRobotSend.class);
     /**
      * webhok
      */
     private final String webhok;
     private String secret;
 
-    public AbstractRobotSend(String webhok) {
+    public AbstractFeiShuRobotSend(String webhok) {
         if (webhok == null || webhok.length() == 0) {
             throw new RobotException("webhok missing");
         }
         this.webhok = webhok;
     }
 
+    public AbstractFeiShuRobotSend(String webhok, String secret) {
+        this(webhok);
+        this.secret = secret;
+    }
+
     @Override
-    public Response send(BaseMessage message) {
+    public FeiShuRobotResponse send(BaseMessage message) {
         Map<String, Object> map = message.toMessage();
         long timestamp = System.currentTimeMillis();
         map.put("timestamp", timestamp / 1000);
         map.put("sign", genSign(timestamp));
-        String content = SimpleJsonProxy.json.toJson(map);
+        return send(map);
+    }
+
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public FeiShuRobotResponse send(String json) {
+        Map<String, Object> map = (Map<String, Object>) SimpleJsonProxy.json.fromJson(json, Map.class);
+        long timestamp = System.currentTimeMillis();
+        map.put("timestamp", timestamp / 1000);
+        map.put("sign", genSign(timestamp));
+        return send(map);
+    }
+
+    protected FeiShuRobotResponse send(Map<String, Object> message) {
+        String content = SimpleJsonProxy.json.toJson(message);
         if (LOGGER.isDebugEnabled()) {
             LOGGER.info(content);
         }
@@ -58,7 +77,7 @@ public abstract class AbstractRobotSend implements IRobotSend {
             LOGGER.info("response status:{},body:{},", response.isSuccess(), response.getBodyStr());
         }
         if (response.isSuccess()) {
-            return Response.toObj(response.getBodyStr());
+            return FeiShuRobotResponse.toObj(response.getBodyStr());
         }
         return null;
     }

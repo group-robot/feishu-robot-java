@@ -34,8 +34,8 @@ String webhok=System.getenv("webhok");
 String secret=System.getenv("secret"); 
 RobotSend send=new RobotSend(webhok); 
 send.setSecret(secret); 
-Response response=send.send(text); 
-System.out.println(response.getMsg());
+Response feiShuRobotResponse=send.send(text); 
+System.out.println(feiShuRobotResponse.getMsg());
 ```
 ## image
 ```java
@@ -44,8 +44,8 @@ String webhok = System.getenv("webhok");
 String secret = System.getenv("secret");
 RobotSend send = new RobotSend(webhok);
 send.setSecret(secret);
-Response response = send.send(message);
-System.out.println(response.getMsg());
+Response feiShuRobotResponse = send.send(message);
+System.out.println(feiShuRobotResponse.getMsg());
 ```
 
 ## post
@@ -70,8 +70,8 @@ String webhok = System.getenv("webhok");
 String secret = System.getenv("secret");
 RobotSend send = new RobotSend(webhok);
 send.setSecret(secret);
-Response response = send.send(message);
-System.out.println(response.getMsg());
+Response feiShuRobotResponse = send.send(message);
+System.out.println(feiShuRobotResponse.getMsg());
 ```
 
 ## interactive
@@ -106,8 +106,8 @@ String webhok = System.getenv("webhok");
 String secret = System.getenv("secret");
 RobotSend send = new RobotSend(webhok);
 send.setSecret(secret);
-Response response = send.send(message);
-System.out.println(response.getMsg());
+Response feiShuRobotResponse = send.send(message);
+System.out.println(feiShuRobotResponse.getMsg());
 ```
 
 ```java
@@ -118,6 +118,6 @@ String webhok = System.getenv("webhok");
 String secret = System.getenv("secret");
 RobotSend send = new RobotSend(webhok);
 send.setSecret(secret);
-Response response = send.send(message);
-System.out.println(response.getMsg());
+Response feiShuRobotResponse = send.send(message);
+System.out.println(feiShuRobotResponse.getMsg());
 ```

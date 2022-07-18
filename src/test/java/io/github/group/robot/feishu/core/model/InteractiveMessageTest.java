@@ -1,7 +1,7 @@
 package io.github.group.robot.feishu.core.model;
 
-import io.github.group.robot.feishu.core.Response;
-import io.github.group.robot.feishu.core.RobotSend;
+import io.github.group.robot.feishu.core.FeiShuRobotResponse;
+import io.github.group.robot.feishu.core.FeiShuRobotSend;
 import io.github.group.robot.feishu.core.constants.TextTag;
 import io.github.group.robot.feishu.core.model.interactive.CardConfig;
 import io.github.group.robot.feishu.core.model.interactive.CardHeader;
@@ -9,9 +9,9 @@ import io.github.group.robot.feishu.core.model.interactive.CardTitle;
 import io.github.group.robot.feishu.core.model.interactive.components.Field;
 import io.github.group.robot.feishu.core.model.interactive.components.Image;
 import io.github.group.robot.feishu.core.model.interactive.components.Text;
-import io.github.group.robot.feishu.core.model.interactive.module.ContentModule;
-import io.github.group.robot.feishu.core.model.interactive.module.HrModule;
-import io.github.group.robot.feishu.core.model.interactive.module.NoteModule;
+import io.github.group.robot.feishu.core.model.interactive.components.module.ContentModule;
+import io.github.group.robot.feishu.core.model.interactive.components.module.HrModule;
+import io.github.group.robot.feishu.core.model.interactive.components.module.NoteModule;
 import org.junit.Test;
 
 public class InteractiveMessageTest {
@@ -46,10 +46,10 @@ public class InteractiveMessageTest {
         );
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");
-        RobotSend send = new RobotSend(webhok);
+        FeiShuRobotSend send = new FeiShuRobotSend(webhok);
         send.setSecret(secret);
-        Response response = send.send(message);
-        System.out.println(response.getMsg());
+        FeiShuRobotResponse feiShuRobotResponse = send.send(message);
+        System.out.println(feiShuRobotResponse.getMsg());
     }
 
     @Test
@@ -59,9 +59,9 @@ public class InteractiveMessageTest {
         InteractiveMessage message = InteractiveMessage.build().cardJsonStr(json);
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");
-        RobotSend send = new RobotSend(webhok);
+        FeiShuRobotSend send = new FeiShuRobotSend(webhok);
         send.setSecret(secret);
-        Response response = send.send(message);
-        System.out.println(response.getMsg());
+        FeiShuRobotResponse feiShuRobotResponse = send.send(message);
+        System.out.println(feiShuRobotResponse.getMsg());
     }
 }

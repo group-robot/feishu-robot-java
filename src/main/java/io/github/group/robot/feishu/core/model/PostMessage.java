@@ -38,6 +38,7 @@ public class PostMessage extends BaseMessage {
     }
 
     private List<PostLang> lang;
+    private String contentJsonStr;
 
     public PostMessage lang(PostLang lang) {
         this.lang.add(lang);
@@ -49,6 +50,11 @@ public class PostMessage extends BaseMessage {
         return this;
     }
 
+    public PostMessage jsonStr(String contentStr) {
+        this.contentJsonStr = contentStr;
+        return this;
+    }
+
     @Override
     protected void init() {
         this.msgType = MessageType.POST;
@@ -56,15 +62,20 @@ public class PostMessage extends BaseMessage {
 
     @Override
     public Map<String, Object> toMessage() {
-        Map<String, Object> lang = new HashMap<>(this.lang.size());
-        for (PostLang postLang : this.lang) {
-            lang.putAll(postLang.toMessage());
-        }
-        Map<String, Object> post = new HashMap<>(1);
-        post.put("post", lang);
+
         Map<String, Object> message = new HashMap<>(2);
         message.put("msg_type", this.msgType.getValue());
-        message.put("content", post);
+        if (null != this.contentJsonStr) {
+            message.put("content", this.contentJsonStr);
+        } else {
+            Map<String, Object> lang = new HashMap<>(this.lang.size());
+            for (PostLang postLang : this.lang) {
+                lang.putAll(postLang.toMessage());
+            }
+            Map<String, Object> post = new HashMap<>(1);
+            post.put("post", lang);
+            message.put("content", post);
+        }
         return message;
     }
 }

@@ -1,4 +1,4 @@
-package io.github.group.robot.feishu.core.model.interactive.module;
+package io.github.group.robot.feishu.core.model.interactive.components.module;
 
 import lombok.Builder;
 

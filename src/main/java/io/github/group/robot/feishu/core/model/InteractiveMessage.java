@@ -4,7 +4,7 @@ import io.github.group.robot.feishu.core.constants.MessageType;
 import io.github.group.robot.feishu.core.model.interactive.CardConfig;
 import io.github.group.robot.feishu.core.model.interactive.CardHeader;
 import io.github.group.robot.feishu.core.model.interactive.CardLink;
-import io.github.group.robot.feishu.core.model.interactive.module.AbstractModule;
+import io.github.group.robot.feishu.core.model.interactive.components.module.AbstractModule;
 import lombok.Getter;
 import lombok.Setter;
 
