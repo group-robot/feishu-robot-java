@@ -10,9 +10,10 @@ public class RobotSendTest {
         TextMessage text = TextMessage.builder().content("test").atAll(false).build();
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");
-        FeiShuRobotSend send = new FeiShuRobotSend(webhok);
+        FeishuRobotClient send = new FeishuRobotClient();
         send.setSecret(secret);
-        FeiShuRobotResponse feiShuRobotResponse = send.send(text);
+        send.setWebhook(webhok);
+        FeishuRobotResponse feiShuRobotResponse = send.sendMessage(text);
         System.out.println(feiShuRobotResponse.getMsg());
     }
 }

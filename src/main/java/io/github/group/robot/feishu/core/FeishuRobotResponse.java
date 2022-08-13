@@ -1,27 +1,34 @@
 package io.github.group.robot.feishu.core;
 
 import com.hb0730.jsons.SimpleJsonProxy;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Map;
 
 /**
- * 响应
+ * response
  *
- * @author bing_huang
- * @date 2021/12/16
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
+ * @date 2022/8/13
  */
-@Getter
-@Setter
-public class FeiShuRobotResponse implements Serializable {
+@Data
+public class FeishuRobotResponse implements Serializable {
     private Integer code;
     private String msg;
 
-    public static FeiShuRobotResponse toObj(String json) {
+    /**
+     * is success ,code==0
+     *
+     * @return success
+     */
+    public boolean isSuccess() {
+        return code == 0;
+    }
+
+    public static FeishuRobotResponse toObj(String json) {
         Map map = SimpleJsonProxy.json.fromJson(json, Map.class);
-        FeiShuRobotResponse feiShuRobotResponse = new FeiShuRobotResponse();
+        FeishuRobotResponse feiShuRobotResponse = new FeishuRobotResponse();
         if (null == map.get("StatusCode")) {
             feiShuRobotResponse.setCode(Integer.valueOf(map.get("code").toString()));
             feiShuRobotResponse.setMsg(map.get("msg").toString());

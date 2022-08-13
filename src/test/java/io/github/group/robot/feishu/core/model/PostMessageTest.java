@@ -1,7 +1,7 @@
 package io.github.group.robot.feishu.core.model;
 
-import io.github.group.robot.feishu.core.FeiShuRobotResponse;
-import io.github.group.robot.feishu.core.FeiShuRobotSend;
+import io.github.group.robot.feishu.core.FeishuRobotClient;
+import io.github.group.robot.feishu.core.FeishuRobotResponse;
 import io.github.group.robot.feishu.core.model.post.PostLang;
 import io.github.group.robot.feishu.core.model.post.PostTags;
 import io.github.group.robot.feishu.core.model.post.PostUnit;
@@ -32,9 +32,10 @@ public class PostMessageTest {
         );
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");
-        FeiShuRobotSend send = new FeiShuRobotSend(webhok);
+        FeishuRobotClient send = new FeishuRobotClient();
         send.setSecret(secret);
-        FeiShuRobotResponse feiShuRobotResponse = send.send(message);
+        send.setWebhook(webhok);
+        FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
         System.out.println(feiShuRobotResponse.getMsg());
     }
 }
