@@ -7,8 +7,7 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/group-robot/java-feishu-robot?style=flat-square">
 </a>
 <a href="https://github.com/group-robot/java-feishu-robot/actions">
-<img alt="GitHub Workflow Status" src="https://img.shields.
-io/github/actions/workflow/status/group-robot/java-feishu-robot/release.yml?style=flat-square">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/group-robot/java-feishu-robot/release.yml?style=flat-square">
 </a>
 <a href="https://www.oracle.com/java/technologies/javase-downloads.html">
 <img alt="jdk" src="https://img.shields.io/badge/jdk-8%2B-green?style=flat-square">
