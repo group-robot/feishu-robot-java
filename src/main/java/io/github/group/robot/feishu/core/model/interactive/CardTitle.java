@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 卡片标题
+ * 卡片标题-内容
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter

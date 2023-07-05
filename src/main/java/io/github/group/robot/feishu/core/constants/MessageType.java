@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 消息类型
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 public enum MessageType implements Serializable {

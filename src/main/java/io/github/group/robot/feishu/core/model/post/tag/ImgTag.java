@@ -1,6 +1,6 @@
 package io.github.group.robot.feishu.core.model.post.tag;
 
-import lombok.Builder;
+import io.github.group.robot.feishu.core.model.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,14 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * img Tag
+ * 富文本 图片标签：img
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter
 @Setter
-@Builder
 public class ImgTag extends PostTag {
     /**
      * 图片的唯一标识
@@ -24,10 +23,12 @@ public class ImgTag extends PostTag {
     /**
      * 图片的高
      */
+    @Deprecated
     private Integer height;
     /**
      * 图片的宽
      */
+    @Deprecated
     private Integer width;
 
 
@@ -41,8 +42,79 @@ public class ImgTag extends PostTag {
         Map<String, Object> imgMap = new HashMap<>(4);
         imgMap.put("tag", tag());
         imgMap.put("image_key", this.imageKey);
-        imgMap.put("width", this.width == null ? 300 : this.width);
-        imgMap.put("height", this.height == null ? 300 : this.height);
+        if (this.height != null) {
+            imgMap.put("height", this.height);
+        }
+        if (this.width != null) {
+            imgMap.put("width", this.width);
+        }
         return imgMap;
+    }
+
+    /**
+     * 构建器
+     *
+     * @return .
+     */
+    public static ImgTagBuilder builder() {
+        return ImgTagBuilder.builder();
+    }
+
+    /**
+     * {@link  ImgTag} 构建器
+     */
+    public static class ImgTagBuilder implements Builder<ImgTag> {
+        private final ImgTag imgTag;
+
+        private ImgTagBuilder() {
+            this.imgTag = new ImgTag();
+        }
+
+        /**
+         * create {@link  ImgTagBuilder}
+         *
+         * @return .
+         */
+        public static ImgTagBuilder builder() {
+            return new ImgTagBuilder();
+        }
+
+        /**
+         * 图片的唯一标识
+         *
+         * @param imageKey .
+         * @return .
+         */
+        public ImgTagBuilder imageKey(String imageKey) {
+            this.imgTag.setImageKey(imageKey);
+            return this;
+        }
+
+        /**
+         * 图片的高
+         *
+         * @param height .
+         * @return .
+         */
+        public ImgTagBuilder height(Integer height) {
+            this.imgTag.setHeight(height);
+            return this;
+        }
+
+        /**
+         * 图片的宽
+         *
+         * @param width .
+         * @return .
+         */
+        public ImgTagBuilder width(Integer width) {
+            this.imgTag.setWidth(width);
+            return this;
+        }
+
+        @Override
+        public ImgTag build() {
+            return this.imgTag;
+        }
     }
 }

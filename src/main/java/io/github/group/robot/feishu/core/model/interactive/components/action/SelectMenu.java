@@ -13,10 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 交互式组件<br>
- * button
+ * 卡片 > 交互式组件 > button
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter

@@ -1,25 +1,28 @@
 package io.github.group.robot.feishu.core.constants;
 
 /**
- * selectMenu 元素标签
+ * 文本内容的对齐方式
  *
  * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
- * @date 2021/12/16
+ * @date 2023/7/5
  */
-public enum SelectMenuTag {
+public enum TextAlign {
     /**
-     * 选项模式
+     * 左对齐
      */
-    SELECT_STATIC("select_static"),
+    Left("left"),
     /**
-     * 选人模式
+     * 居中对齐
      */
-    SELECT_PERSON("select_person"),
+    Center("center"),
+    /**
+     * 右对齐
+     */
+    Right("right"),
     ;
-
     private final String value;
 
-    SelectMenuTag(String value) {
+    TextAlign(String value) {
         this.value = value;
     }
 

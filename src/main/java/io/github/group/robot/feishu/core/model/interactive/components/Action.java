@@ -1,8 +1,8 @@
 package io.github.group.robot.feishu.core.model.interactive.components;
 
-import io.github.group.robot.feishu.core.model.Tag;
 import io.github.group.robot.feishu.core.constants.ActionLayout;
 import io.github.group.robot.feishu.core.model.IMessage;
+import io.github.group.robot.feishu.core.model.Tag;
 import io.github.group.robot.feishu.core.model.interactive.components.action.ActionComponent;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 交互模块
+ * 卡片 > 交互模块
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter

@@ -1,8 +1,8 @@
 package io.github.group.robot.feishu.core.model.interactive.components;
 
-import io.github.group.robot.feishu.core.model.Tag;
+import io.github.group.robot.feishu.core.model.Builder;
 import io.github.group.robot.feishu.core.model.IMessage;
-import lombok.Builder;
+import io.github.group.robot.feishu.core.model.Tag;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,15 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 可内嵌非交互元素<br>
- * Image
+ * 卡片 >可内嵌非交互元素 > Image
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter
 @Setter
-@Builder
 public class Image implements IMessage, Tag {
     private final String tag = "img";
     /**
@@ -48,4 +46,72 @@ public class Image implements IMessage, Tag {
     public String tag() {
         return this.tag;
     }
+
+    /**
+     * 构造器
+     *
+     * @return .
+     */
+    public static ImageBuilder builder() {
+        return new ImageBuilder();
+    }
+
+    /**
+     * {@link Image} 构造器
+     */
+    public static class ImageBuilder implements Builder<Image> {
+        private final Image image;
+
+        private ImageBuilder() {
+            this.image = new Image();
+        }
+
+        /**
+         * create builder
+         *
+         * @return .
+         */
+        public static ImageBuilder builder() {
+            return new ImageBuilder();
+        }
+
+        /**
+         * 图片资源
+         *
+         * @param imgKey .
+         * @return .
+         */
+        public ImageBuilder imgKey(String imgKey) {
+            this.image.setImgKey(imgKey);
+            return this;
+        }
+
+        /**
+         * 图片hover说明
+         *
+         * @param alt .
+         * @return .
+         */
+        public ImageBuilder alt(Text alt) {
+            this.image.setAlt(alt);
+            return this;
+        }
+
+        /**
+         * 点击后是否放大图片,默认true
+         *
+         * @param preview .
+         * @return .
+         */
+        public ImageBuilder preview(Boolean preview) {
+            this.image.setPreview(preview);
+            return this;
+        }
+
+        @Override
+        public Image build() {
+            return this.image;
+        }
+    }
+
 }

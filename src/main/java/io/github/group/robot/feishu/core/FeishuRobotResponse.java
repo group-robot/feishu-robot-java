@@ -16,6 +16,7 @@ import java.util.Map;
 public class FeishuRobotResponse implements Serializable {
     private Integer code;
     private String msg;
+    private Object data;
 
     /**
      * is success ,code==0
@@ -26,16 +27,12 @@ public class FeishuRobotResponse implements Serializable {
         return code == 0;
     }
 
-    public static FeishuRobotResponse toObj(String json) {
-        Map map = SimpleJsonProxy.json.fromJson(json, Map.class);
+    public static FeishuRobotResponse toObj(String resultJson) {
+        Map resultMap = SimpleJsonProxy.json.fromJson(resultJson, Map.class);
         FeishuRobotResponse feiShuRobotResponse = new FeishuRobotResponse();
-        if (null == map.get("StatusCode")) {
-            feiShuRobotResponse.setCode(Integer.valueOf(map.get("code").toString()));
-            feiShuRobotResponse.setMsg(map.get("msg").toString());
-        } else {
-            feiShuRobotResponse.setCode(Integer.valueOf(map.get("StatusCode").toString()));
-            feiShuRobotResponse.setMsg(map.get("StatusMessage").toString());
-        }
+        feiShuRobotResponse.setCode(Integer.valueOf(resultMap.get("code").toString()));
+        feiShuRobotResponse.setMsg(resultMap.get("msg").toString());
+        feiShuRobotResponse.setData(resultMap.get("data"));
         return feiShuRobotResponse;
     }
 }

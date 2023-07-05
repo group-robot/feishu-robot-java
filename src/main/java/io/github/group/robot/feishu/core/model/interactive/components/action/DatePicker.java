@@ -10,10 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 交互式组件<br>
- * datePicker
+ * 卡片 > 交互式组件 > datePicker
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter

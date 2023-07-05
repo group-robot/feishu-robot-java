@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 富文本
+ * 富文本 <a href="https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot#f62e72d5">发送富文本消息</a>
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Setter
@@ -37,21 +37,51 @@ public class PostMessage extends BaseMessage {
         this.lang = lang;
     }
 
+    /**
+     * 富文本语言配置
+     */
     private List<PostLang> lang;
+
+    /**
+     * 富文本json字符串,优先级高于lang,格式:
+     * <PRE>
+     * "post": {
+     * "zh_cn": {}
+     * }
+     * <PRE>
+     */
     private String contentJsonStr;
 
+    /**
+     * 添加语言配置
+     *
+     * @param lang .
+     * @return .
+     */
     public PostMessage lang(PostLang lang) {
         this.lang.add(lang);
         return this;
     }
 
+    /**
+     * 添加语言配置
+     *
+     * @param lang .
+     * @return .
+     */
     public PostMessage lang(PostLang... lang) {
         this.lang.addAll(Arrays.asList(lang));
         return this;
     }
 
-    public PostMessage jsonStr(String contentStr) {
-        this.contentJsonStr = contentStr;
+    /**
+     * 设置语言配置
+     *
+     * @param langJson .
+     * @return .
+     */
+    public PostMessage lang(String langJson) {
+        this.contentJsonStr = langJson;
         return this;
     }
 

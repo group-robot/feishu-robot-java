@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 交互式组件<br>
- * overflow 提供折叠的按钮型菜单
+ * 卡片 > 交互式组件 > overflow 提供折叠的按钮型菜单
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
 @Getter

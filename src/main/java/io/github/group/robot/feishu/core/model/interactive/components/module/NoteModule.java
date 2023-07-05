@@ -4,6 +4,8 @@ import io.github.group.robot.feishu.core.exception.RobotException;
 import io.github.group.robot.feishu.core.model.IMessage;
 import io.github.group.robot.feishu.core.model.interactive.components.Image;
 import io.github.group.robot.feishu.core.model.interactive.components.Text;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 备注模块
+ * 卡片 > 备注模块
  *
- * @author bing_huang
+ * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
+@Getter
+@Setter
 public class NoteModule extends AbstractModule {
     private final String tag = "note";
 

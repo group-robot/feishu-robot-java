@@ -8,7 +8,10 @@ public class ImageMessageTest {
 
     @Test
     public void toMessage() {
-        ImageMessage message = ImageMessage.builder().imageKey("img_7ea74629-9191-4176-998c-2e603c9c5e8g").build();
+        ImageMessage message = ImageMessage
+                .builder()
+                .imageKey("img_7ea74629-9191-4176-998c-2e603c9c5e8g")
+                .build();
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");
         FeishuRobotClient send = new FeishuRobotClient();

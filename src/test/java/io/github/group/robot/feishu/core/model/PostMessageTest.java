@@ -15,20 +15,20 @@ public class PostMessageTest {
     @Test
     public void toMessage() {
         PostMessage message = PostMessage.build().lang(
-            PostLang.builder()
-                .lang("zh_cn")
-                .unit(
-                    PostUnit.build()
-                        .title("项目更新通知")
-                        .addTags(
-                            PostTags.build().addTags(
-                                TextTag.builder().text("项目有更新: ").build(),
-                                ATag.builder().text("请查看").href("http://www.example.com/").build(),
-                                AtTag.builder().atAll(true).build()
-                            )
+                PostLang.builder()
+                        .lang("zh_cn")
+                        .unit(
+                                PostUnit.build()
+                                        .title("项目更新通知")
+                                        .addTags(
+                                                PostTags.build().addTags(
+                                                        TextTag.builder().text("项目有更新: ").build(),
+                                                        ATag.builder().text("请查看").href("http://www.example.com/").build(),
+                                                        AtTag.builder().atAll(true).build()
+                                                )
+                                        )
                         )
-                )
-                .build()
+                        .build()
         );
         String webhok = System.getenv("webhok");
         String secret = System.getenv("secret");

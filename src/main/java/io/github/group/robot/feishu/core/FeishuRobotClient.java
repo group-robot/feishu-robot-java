@@ -69,9 +69,6 @@ public class FeishuRobotClient {
             throw new RobotException("message missing");
         }
         Map<String, Object> map = message.toMessage();
-        long timestamp = System.currentTimeMillis();
-        map.put("timestamp", timestamp / 1000);
-        map.put("sign", genSign(timestamp));
         return send(url, map);
     }
 
@@ -88,13 +85,16 @@ public class FeishuRobotClient {
             throw new RobotException("message missing");
         }
         Map<String, Object> message = SimpleJsonProxy.json.fromJson(json, Map.class);
-        long timestamp = System.currentTimeMillis();
-        message.put("timestamp", timestamp / 1000);
-        message.put("sign", genSign(timestamp));
         return send(url, message);
     }
 
     protected FeishuRobotResponse send(String url, Map<String, Object> message) {
+
+        if (null != this.secret && !"".equals(this.secret)) {
+            long timestamp = System.currentTimeMillis();
+            message.put("timestamp", timestamp / 1000);
+            message.put("sign", genSign(timestamp));
+        }
         String content = SimpleJsonProxy.json.toJson(message);
         if (log.isDebugEnabled()) {
             log.info(content);
