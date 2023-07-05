@@ -42,7 +42,7 @@ public class TextMessage extends BaseMessage {
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> contentMap = new HashMap<>(1);
-        if (this.atAll) {
+        if (Boolean.TRUE.equals(this.atAll)) {
             contentMap.put("text", "<at user_id=\"all\">所有</at> " + this.content);
         } else {
             contentMap.put("text", this.content);
