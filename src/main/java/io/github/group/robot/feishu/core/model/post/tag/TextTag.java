@@ -24,6 +24,10 @@ public class TextTag extends PostTag {
      * 表示是不是 unescape 解码，默认为 false ，不用可以不填
      */
     private Boolean unEscape;
+    /**
+     * 换行
+     */
+    private boolean enter;
 
     @Override
     public String tag() {
@@ -34,6 +38,9 @@ public class TextTag extends PostTag {
     public Map<String, Object> toMessage() {
         Map<String, Object> textMap = new HashMap<>(3);
         textMap.put("tag", tag());
+        if (this.enter) {
+            this.text = this.text + "\n";
+        }
         textMap.put("text", this.text);
         textMap.put("un_escape", this.unEscape);
         return textMap;
@@ -79,11 +86,25 @@ public class TextTag extends PostTag {
         }
 
         /**
+         * 文本内容
+         *
+         * @param text  .
+         * @param enter .
+         * @return .
+         */
+        public TextTagBuilder text(String text, boolean enter) {
+            this.textTag.setText(text);
+            this.textTag.setEnter(enter);
+            return this;
+        }
+
+        /**
          * 换行
+         *
          * @return .
          */
         public TextTagBuilder enter() {
-            this.textTag.setText(this.textTag.getText() + "\n");
+            this.textTag.setEnter(true);
             return this;
         }
 
