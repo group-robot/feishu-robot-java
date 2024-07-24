@@ -79,6 +79,15 @@ public class TextTag extends PostTag {
         }
 
         /**
+         * 换行
+         * @return .
+         */
+        public TextTagBuilder enter() {
+            this.textTag.setText(this.textTag.getText() + "\n");
+            return this;
+        }
+
+        /**
          * 表示是不是 unescape 解码，默认为 false ，不用可以不填
          *
          * @param unEscape .
