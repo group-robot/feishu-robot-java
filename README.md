@@ -79,7 +79,7 @@ PostMessage message = PostMessage.build().lang(
                                 .title("项目更新通知")
                                 .addTags(
                                         PostTags.build().addTags(
-                                                TextTag.builder().text("项目有更新: ").build(),
+                                                TextTag.builder().text("项目有更新: ").enter().build(),
                                                 ATag.builder().text("请查看").href("http://www.example.com/").build(),
                                                 AtTag.builder().atAll(true).build()
                                         )
