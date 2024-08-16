@@ -1,24 +1,27 @@
 package io.github.group.robot.feishu.core.constants;
 
+import lombok.Getter;
+
 /**
  * 文本内容的对齐方式
  *
  * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2023/7/5
  */
+@Getter
 public enum TextAlign {
     /**
      * 左对齐
      */
-    Left("left"),
+    LEFT("left"),
     /**
      * 居中对齐
      */
-    Center("center"),
+    CENTER("center"),
     /**
      * 右对齐
      */
-    Right("right"),
+    RIGHT("right"),
     ;
     private final String value;
 
@@ -26,7 +29,4 @@ public enum TextAlign {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
-    }
 }

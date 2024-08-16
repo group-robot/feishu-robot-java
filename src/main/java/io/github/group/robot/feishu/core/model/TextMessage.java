@@ -2,7 +2,6 @@ package io.github.group.robot.feishu.core.model;
 
 import io.github.group.robot.feishu.core.constants.MessageType;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +13,6 @@ import java.util.Map;
  * @date 2021/12/16
  */
 @Getter
-@Setter
 public class TextMessage extends BaseMessage {
     public TextMessage() {
         super();
@@ -29,10 +27,44 @@ public class TextMessage extends BaseMessage {
      * 内容
      */
     private String content;
+
+
+    /**
+     * 设置内容
+     *
+     * @param content 内容
+     * @return this
+     */
+    public TextMessage setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
     /**
      * 是否at所有
      */
     private Boolean atAll;
+
+    /**
+     * 设置at所有
+     *
+     * @param atAll 是否at所有
+     * @return this
+     */
+    public TextMessage setAtAll(Boolean atAll) {
+        this.atAll = atAll;
+        return this;
+    }
+
+    /**
+     * at所有
+     *
+     * @return this
+     */
+    public TextMessage atAll() {
+        this.atAll = true;
+        return this;
+    }
 
     @Override
     protected void init() {
@@ -53,59 +85,35 @@ public class TextMessage extends BaseMessage {
         return textMap;
     }
 
+
     /**
-     * create {@link  TextMessageBuilder}
+     * 创建一个文本消息
      *
-     * @return {@link  TextMessageBuilder}
+     * @param content 内容
+     * @return 文本消息
      */
-    public static TextMessageBuilder builder() {
-        return TextMessageBuilder.builder();
+    public static TextMessage of(String content) {
+        return new TextMessage(content);
     }
 
     /**
-     * {@link  TextMessage} Builder
+     * 创建一个文本消息
+     *
+     * @param content 内容
+     * @param atAll   是否at所有
+     * @return 文本消息
      */
-    public static class TextMessageBuilder implements Builder<TextMessage> {
-        private final TextMessage message;
+    public static TextMessage of(String content, Boolean atAll) {
+        return new TextMessage(content)
+                .setAtAll(atAll);
+    }
 
-        /**
-         * create {@link  TextMessageBuilder}
-         *
-         * @return this
-         */
-        public static TextMessageBuilder builder() {
-            return new TextMessageBuilder(new TextMessage());
-        }
-
-        private TextMessageBuilder(TextMessage message) {
-            this.message = message;
-        }
-
-        /**
-         * set content
-         *
-         * @param content content
-         * @return this
-         */
-        public TextMessageBuilder content(String content) {
-            this.message.setContent(content);
-            return this;
-        }
-
-        /**
-         * set at_all
-         *
-         * @param atAll .
-         * @return this
-         */
-        public TextMessageBuilder atAll(Boolean atAll) {
-            this.message.setAtAll(atAll);
-            return this;
-        }
-
-        @Override
-        public TextMessage build() {
-            return this.message;
-        }
+    /**
+     * 创建一个空的文本消息
+     *
+     * @return 文本消息
+     */
+    public static TextMessage of() {
+        return new TextMessage();
     }
 }

@@ -1,33 +1,29 @@
 package io.github.group.robot.feishu.core.constants;
 
+import lombok.Getter;
+
 /**
- * 交互模块 布局
- *
  * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
- * @date 2021/12/16
+ * @date 2024/8/8
  */
+@Getter
 public enum ActionLayout {
     /**
-     * 二等分布局
+     * 二等分布局，每行两列交互元素。
      */
     BISECTED("bisected"),
     /**
-     * 三等分布局
+     * 三等分布局，每行三列交互元素。
      */
     TRISECTION("trisection"),
     /**
-     * 流式布局
+     * ：流式布局，元素会按自身大小横向排列并在空间不够的时候折行。
      */
     FLOW("flow"),
     ;
-
     private final String value;
 
     ActionLayout(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 }

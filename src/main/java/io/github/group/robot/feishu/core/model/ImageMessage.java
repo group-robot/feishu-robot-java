@@ -35,6 +35,17 @@ public class ImageMessage extends BaseMessage {
         msgType = MessageType.IMAGE;
     }
 
+    /**
+     * 图片的唯一标识
+     *
+     * @param imageKey 图片的唯一标识
+     * @return .
+     */
+    public ImageMessage setImageKey(String imageKey) {
+        this.imageKey = imageKey;
+        return this;
+    }
+
     @Override
     public Map<String, Object> toMessage() {
         Map<String, Object> imageMap = new HashMap<>(1);
@@ -46,48 +57,21 @@ public class ImageMessage extends BaseMessage {
     }
 
     /**
-     * create {@link  ImageMessageBuilder}
+     * 图片
      *
-     * @return {@link  ImageMessageBuilder}
+     * @param imageKey 图片的唯一标识
+     * @return .
      */
-    public static ImageMessageBuilder builder() {
-        return new ImageMessageBuilder();
+    public static ImageMessage of(String imageKey) {
+        return new ImageMessage(imageKey);
     }
 
     /**
-     * {@link ImageMessage} builder static inner class
+     * 图片
+     *
+     * @return .
      */
-    public static class ImageMessageBuilder implements Builder<ImageMessage> {
-        private final ImageMessage imageMessage;
-
-        private ImageMessageBuilder() {
-            this.imageMessage = new ImageMessage();
-        }
-
-        /**
-         * create {@link ImageMessageBuilder}
-         *
-         * @return this
-         */
-        public static ImageMessageBuilder builder() {
-            return new ImageMessageBuilder();
-        }
-
-        /**
-         * 图片的唯一标识，可以通过上传图片 API 获取。
-         *
-         * @param imageKey .
-         * @return this
-         */
-        public ImageMessageBuilder imageKey(String imageKey) {
-            this.imageMessage.setImageKey(imageKey);
-            return this;
-        }
-
-
-        @Override
-        public ImageMessage build() {
-            return this.imageMessage;
-        }
+    public static ImageMessage of() {
+        return new ImageMessage();
     }
 }

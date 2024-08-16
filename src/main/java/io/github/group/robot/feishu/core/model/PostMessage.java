@@ -1,7 +1,7 @@
 package io.github.group.robot.feishu.core.model;
 
 import io.github.group.robot.feishu.core.constants.MessageType;
-import io.github.group.robot.feishu.core.model.post.PostLang;
+import io.github.group.robot.feishu.core.model.post.Paragraph;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,69 +21,113 @@ import java.util.Map;
 @Getter
 public class PostMessage extends BaseMessage {
     /**
-     * build
-     *
-     * @return {@link  PostMessage}
+     * 富文本内容
      */
-    public static PostMessage build() {
-        return new PostMessage();
-    }
+    private List<Paragraph> content;
+
+    /**
+     * 富文本内容，json格式,高于其他属性
+     * <pre>
+     * "post": {
+     *   "zh_cn": {}
+     * }
+     * </pre>
+     */
+    private String jsonContent;
 
     public PostMessage() {
-        this(new ArrayList<>());
-    }
-
-    public PostMessage(List<PostLang> lang) {
-        this.lang = lang;
+        super();
     }
 
     /**
-     * 富文本语言配置
+     * @param content 富文本内容
      */
-    private List<PostLang> lang;
+    public PostMessage(List<Paragraph> content) {
+        super();
+        this.content = content;
+    }
 
     /**
-     * 富文本json字符串,优先级高于lang,格式:
-     * <PRE>
-     * "post": {
-     * "zh_cn": {}
-     * }
-     * <PRE>
+     * @param jsonContent 富文本内容，json格式
      */
-    private String contentJsonStr;
+    public PostMessage(String jsonContent) {
+        super();
+        this.jsonContent = jsonContent;
+    }
 
     /**
-     * 添加语言配置
+     * @param zhParagraph 富文本内容,默认为zh_cn
+     */
+    public PostMessage(Paragraph zhParagraph) {
+        super();
+        this.content = new ArrayList<>();
+        this.content.add(zhParagraph);
+    }
+
+    /**
+     * 设置富文本内容，json格式
      *
-     * @param lang .
-     * @return .
+     * @param jsonContent 富文本内容，json格式
+     * @return {@link PostMessage}
      */
-    public PostMessage lang(PostLang lang) {
-        this.lang.add(lang);
+    public PostMessage setJsonContent(String jsonContent) {
+        this.jsonContent = jsonContent;
         return this;
     }
 
     /**
-     * 添加语言配置
+     * 设置富文本内容
      *
-     * @param lang .
-     * @return .
+     * @param content 富文本内容
+     * @return {@link PostMessage}
      */
-    public PostMessage lang(PostLang... lang) {
-        this.lang.addAll(Arrays.asList(lang));
+    public PostMessage setContent(List<Paragraph> content) {
+        this.content = content;
         return this;
     }
 
     /**
-     * 设置语言配置
+     * 添加富文本消息的内容
      *
-     * @param langJson .
-     * @return .
+     * @param paragraph 富文本消息的内容
+     * @return {@link PostMessage}
      */
-    public PostMessage lang(String langJson) {
-        this.contentJsonStr = langJson;
+    public PostMessage addContent(Paragraph paragraph) {
+        if (null == this.content) {
+            this.content = new ArrayList<>();
+        }
+        this.content.add(paragraph);
         return this;
     }
+
+    /**
+     * 添加富文本消息的内容
+     *
+     * @param paragraphs 富文本消息的内容
+     * @return {@link PostMessage}
+     */
+    public PostMessage addContent(List<Paragraph> paragraphs) {
+        if (null == this.content) {
+            this.content = new ArrayList<>();
+        }
+        this.content.addAll(paragraphs);
+        return this;
+    }
+
+    /**
+     * 添加富文本消息的内容
+     *
+     * @param paragraphs 富文本消息的内容
+     * @return {@link PostMessage}
+     */
+    public PostMessage addContent(Paragraph... paragraphs) {
+        if (null == this.content) {
+            this.content = new ArrayList<>();
+        }
+        this.content.addAll(Arrays.asList(paragraphs));
+        return this;
+    }
+
 
     @Override
     protected void init() {
@@ -92,20 +136,62 @@ public class PostMessage extends BaseMessage {
 
     @Override
     public Map<String, Object> toMessage() {
-
         Map<String, Object> message = new HashMap<>(2);
-        message.put("msg_type", this.msgType.getValue());
-        if (null != this.contentJsonStr) {
-            message.put("content", this.contentJsonStr);
+        message.put("msg_type", msgType.getValue());
+        if (null != jsonContent) {
+            message.put("content", this.jsonContent);
         } else {
-            Map<String, Object> lang = new HashMap<>(this.lang.size());
-            for (PostLang postLang : this.lang) {
-                lang.putAll(postLang.toMessage());
+            Map<String, Object> postContent = new HashMap<>();
+            if (null != this.content) {
+                for (Paragraph paragraph : this.content) {
+                    postContent.putAll(paragraph.toMessage());
+                }
             }
-            Map<String, Object> post = new HashMap<>(1);
-            post.put("post", lang);
+            Map<String, Object> post = new HashMap<>();
+            post.put("post", postContent);
+
             message.put("content", post);
         }
         return message;
+    }
+
+
+    /**
+     * 创建富文本消息
+     *
+     * @return {@link PostMessage}
+     */
+    public static PostMessage of() {
+        return new PostMessage();
+    }
+
+    /**
+     * 创建富文本消息
+     *
+     * @param content 富文本内容
+     * @return {@link PostMessage}
+     */
+    public static PostMessage of(List<Paragraph> content) {
+        return new PostMessage(content);
+    }
+
+    /**
+     * 创建富文本消息
+     *
+     * @param jsonContent 富文本内容，json格式
+     * @return {@link PostMessage}
+     */
+    public static PostMessage of(String jsonContent) {
+        return new PostMessage(jsonContent);
+    }
+
+    /**
+     * 创建富文本消息
+     *
+     * @param zhParagraph 富文本内容,默认为zh_cn
+     * @return {@link PostMessage}
+     */
+    public static PostMessage of(Paragraph zhParagraph) {
+        return new PostMessage(zhParagraph);
     }
 }

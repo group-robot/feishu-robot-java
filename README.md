@@ -14,6 +14,9 @@
 </a>
 </p>
 
+
+**v1与v2版本存在差异，v1版本为原始版本，v2版本为重构版本，v2版本支持更多消息类型，更加灵活，v1版本不再维护，建议使用v2版本**
+
 # pom
 
 ```xml
@@ -25,303 +28,110 @@
 </dependency>
 ```
 
+# 功能列表
+
+- [x] 发送文本消息
+- [x] 发送富文本消息
+- [x] 发送群名片消息
+- [x] 发送图片消息
+
+<!-- @formatter:off -->
 # example
 
-## text
+## 发送文本消息
 
 ```java
-TextMessage message = TextMessage
-        .builder()
-        .content("test")
-        .atAll(false)
-        .build();
-String webhok = System.getenv("webhok");
-String secret = System.getenv("secret");
+TextMessage message = TextMessage.of("新更新提醒");
+String secret = "";
+String webhook = "";
 FeishuRobotClient send = new FeishuRobotClient();
-        send.
-
-setSecret(secret);
-        send.
-
-setWebhook(webhok);
+send.setSecret(secret);
+send.setWebhook(webhook);
 
 FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
 ```
 
-## image
+## 发送富文本消息
 
-```java
-ImageMessage message = ImageMessage
-        .builder()
-        .imageKey("img_7ea74629-9191-4176-998c-2e603c9c5e8g")
-        .build();
-String webhok = System.getenv("webhok");
-String secret = System.getenv("secret");
+```java 
+ PostMessage message = PostMessage.of()
+        .addContent(Paragraph
+                .of()
+                .setTitle("项目更新通知")
+                .newLine()
+                .addContent(TextTag.of("项目有更新: "))
+                .addContent(ATag.of("请查看", "http://www.example.com/"))
+                .addContent(AtTag.of().atAll()));
+
+String webhook = "";
+String secret = "";
 FeishuRobotClient send = new FeishuRobotClient();
-        send.
-
-setSecret(secret);
-        send.
-
-setWebhook(webhok);
+send.setSecret(secret);
+send.setWebhook(webhook);
 
 FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
 ```
 
-## post
+## 发送群名片消息
 
 ```java
-PostMessage message = PostMessage.build().lang(
-        PostLang.builder()
-                .lang("zh_cn")
-                .unit(
-                        PostUnit.build()
-                                .title("项目更新通知")
-                                .addTags(
-                                        PostTags.build().addTags(
-                                                TextTag.builder().text("项目有更新: ").enter().build(),
-                                                ATag.builder().text("请查看").href("http://www.example.com/").build(),
-                                                AtTag.builder().atAll(true).build()
-                                        )
-                                )
-                )
+ ShareChatMessage message = ShareChatMessage.of("oc_f5b1a7eb27ae2****339ff");
+String webhook = "";
+String secret = "";
+FeishuRobotClient send = new FeishuRobotClient();
+send.setSecret(secret);
+send.setWebhook(webhook);
+FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
+```
+
+## 发送图片消息
+
+```java
+ ImageMessage message = ImageMessage.of("img_7ea74629-9191-4176-998c-2e603c9c5e8g");
+String webhook = "";
+String secret = "";
+FeishuRobotClient send = new FeishuRobotClient();
+send.setSecret(secret);
+send.setWebhook(webhook);
+FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
+```
+
+## 发送卡片消息
+
+```java
+ CardHeader cardHeader = CardHeader.of(
+        CardTitle
+                .builder()
+                .setTitle(Title.of("今日旅游推荐"))
                 .build()
 );
-String webhok = System.getenv("webhok");
-String secret = System.getenv("secret");
+CardBody cardBody = CardBody
+        .of()
+        .add(Text.builder().setText(TextEl.builder()
+                .setContent(ContentI18n.of(TextTag.LARK_MD, "**西湖**，位于浙江省杭州市西湖区龙井路1号，杭州市区西部，景区总面积49平方千米，汇水面积为21" +
+                        ".22平方千米，湖面面积为6.38平方千米。"))
+                .build()).build())
+        .add(Button.builder()
+                .setText("更多景点介绍 :玫瑰:")
+                .setType(ButtonType.DEFAULT)
+                .build());
+
+
+CardV2Message cardV2Message = CardV2Message
+        .builder()
+        .setHeader(cardHeader)
+        .setBody(cardBody)
+        .build();
+
+String webhok = "";
+String secret = "";
 FeishuRobotClient send = new FeishuRobotClient();
-        send.
-
-setSecret(secret);
-        send.
-
-setWebhook(webhok);
-
-FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
+send.setSecret(secret);
+send.setWebhook(webhok);
+FeishuRobotResponse feiShuRobotResponse = send.sendMessage(cardV2Message);
 ```
 
-## interactive
-
-```java
-InteractiveMessage message = InteractiveMessage.build();
-        message.
-
-config(CardConfig.builder().
-
-wideScreenMode(true).
-
-build());
-        message.
-
-setHeader(CardHeader.builder().
-
-title(CardTitle.build().
-
-content("\uD83D\uDC08 英国短毛猫")).
-
-template("indigo").
-
-build());
-        message.
-
-addElements(
-        ContentModule.build()
-        .
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("英国短毛猫，体形圆胖，四肢短粗发达，毛短而密，头大脸圆，对人友善。 "+
-                "\n其历史可追溯至古罗马时期的家猫，由于拥有悠久的育种历史，称得上是猫家族中的典范。").
-
-build())
-        .
-
-extra(Image.builder().
-
-imgKey("img_70558e3a-2eef-4e8f-9a07-a701c165431g").
-
-alt(
-        Text.builder().
-
-tag(TextTag.PLAIN_TEXT).
-
-content("图片").
-
-build()).
-
-build()),
-        ContentModule.
-
-build()
-        .
-
-addField(
-        Field.builder().
-
-isShort(true).
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("**中文学名：**\n英国短毛猫").
-
-build()).
-
-build(),
-        Field.
-
-builder().
-
-isShort(true).
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("**拉丁学名：**\nFelinae").
-
-build()).
-
-build(),
-        Field.
-
-builder().
-
-isShort(false).
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content(" ").
-
-build()).
-
-build(),
-        Field.
-
-builder().
-
-isShort(true).
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("**体形：**\n圆胖").
-
-build()).
-
-build(),
-        Field.
-
-builder().
-
-isShort(true).
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("**被毛：**\n短而浓密、俗称地毯毛").
-
-build()).
-
-build()
-        ),
-                HrModule.
-
-builder().
-
-build(),
-        ContentModule.
-
-build()
-        .
-
-text(Text.builder().
-
-tag(TextTag.LARK_MD).
-
-content("**1 形态特征**\n\n 🔵 外形：身体厚实，胸部饱满宽阔，腿部粗壮，爪子浑圆，尾巴的根部粗壮，尾尖钝圆。\n\n🔵 毛色：共有十五种品种被承认，其中最著名的是蓝色系的英国短毛猫。 ").
-
-build())
-        .
-
-extra(Image.builder().
-
-imgKey("img_70558e3a-2eef-4e8f-9a07-a701c165431g").
-
-alt(Text.builder().
-
-tag(TextTag.PLAIN_TEXT).
-
-content("图片").
-
-build()).
-
-build()),
-        NoteModule.
-
-build().
-
-addElement(
-        Image.builder().
-
-imgKey("img_e61db329-2469-4da7-8f13-2d2f284c3b1g").
-
-alt(Text.builder().
-
-tag(TextTag.PLAIN_TEXT).
-
-content("图片").
-
-build()).
-
-build(),
-        Text.
-
-builder().
-
-tag(TextTag.PLAIN_TEXT).
-
-content("以上资料来自百度百科").
-
-build()
-        )
-                );
-String webhok = System.getenv("webhok");
-String secret = System.getenv("secret");
-FeishuRobotClient send = new FeishuRobotClient();
-        send.
-
-setSecret(secret);
-        send.
-
-setWebhook(webhok);
-
-FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
-```
-
-```java
-   String json = "{\"config\":{\"enable_forward\":true,\"wide_screen_mode\":true}," +
-        "\"elements\":[{\"extra\":{\"alt\":{\"content\":\"图片\",\"tag\":\"plain_text\"},\"compact_width\":false,\"img_key\":\"img_1cad0e51-26f6-492a-8280-a47057b09a0g\",\"mode\":\"crop_center\",\"preview\":true,\"tag\":\"img\"},\"fields\":null,\"tag\":\"div\",\"text\":{\"content\":\"英国短毛猫，体形圆胖，四肢短粗发达，毛短而密，头大脸圆，对人友善。 \\n其历史可追溯至古罗马时期的家猫，由于拥有悠久的育种历史，称得上是猫家族中的典范。\",\"tag\":\"lark_md\"}},{\"fields\":[{\"is_short\":true,\"text\":{\"content\":\"**中文学名：**\\n英国短毛猫\",\"tag\":\"lark_md\"}},{\"is_short\":true,\"text\":{\"content\":\"**拉丁学名：**\\nFelinae\",\"tag\":\"lark_md\"}},{\"is_short\":false,\"text\":{\"content\":\"\",\"tag\":\"lark_md\"}},{\"is_short\":true,\"text\":{\"content\":\"**体形：**\\n圆胖\",\"tag\":\"lark_md\"}},{\"is_short\":true,\"text\":{\"content\":\"**被毛：**\\n短而浓密、俗称地毯毛\",\"tag\":\"lark_md\"}}],\"tag\":\"div\"},{\"tag\":\"hr\"},{\"extra\":{\"alt\":{\"content\":\"图片\",\"tag\":\"plain_text\"},\"compact_width\":false,\"img_key\":\"img_70558e3a-2eef-4e8f-9a07-a701c165431g\",\"mode\":\"crop_center\",\"preview\":true,\"tag\":\"img\"},\"fields\":null,\"tag\":\"div\",\"text\":{\"content\":\"**1 形态特征**\\n\\n \uD83D\uDD35 外形：身体厚实，胸部饱满宽阔，腿部粗壮，爪子浑圆，尾巴的根部粗壮，尾尖钝圆。\\n\\n\uD83D\uDD35 毛色：共有十五种品种被承认，其中最著名的是蓝色系的英国短毛猫。 \",\"tag\":\"lark_md\"}},{\"elements\":[{\"alt\":{\"content\":\"图片\",\"tag\":\"plain_text\"},\"compact_width\":false,\"img_key\":\"img_7ea74629-9191-4176-998c-2e603c9c5e8g\",\"mode\":\"crop_center\",\"preview\":true,\"tag\":\"img\"},{\"content\":\"以上资料来自百度百科\",\"tag\":\"plain_text\"}],\"tag\":\"note\"}],\"header\":{\"template\":\"indigo\",\"title\":{\"content\":\"\uD83D\uDC08 英国短毛猫\",\"tag\":\"plain_text\"}}}";
-InteractiveMessage message = InteractiveMessage.build().cardJsonStr(json);
-String webhok = System.getenv("webhok");
-String secret = System.getenv("secret");
-FeishuRobotClient send = new FeishuRobotClient();
-        send.
-
-setSecret(secret);
-        send.
-
-setWebhook(webhok);
-
-FeishuRobotResponse feiShuRobotResponse = send.sendMessage(message);
-```
+<!-- @formatter:on -->
 
 # Http,JSON Library 选择
 

@@ -1,5 +1,7 @@
 package io.github.group.robot.feishu.core.constants;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * @author <a href="mailto:huangbing0730@gmail">hb0730</a>
  * @date 2021/12/16
  */
+@Getter
 public enum MessageType implements Serializable {
     /**
      * 文本
@@ -17,6 +20,10 @@ public enum MessageType implements Serializable {
      * 富文本
      */
     POST("post"),
+    /**
+     * 群名片
+     */
+    SHARE_CHAT("share_chat"),
     /**
      * 图片
      */
@@ -35,7 +42,4 @@ public enum MessageType implements Serializable {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
-    }
 }
