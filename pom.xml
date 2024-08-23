@@ -11,7 +11,7 @@
 
     <name>feishu-robot-core</name>
     <description>feishu robot java version</description>
-    <url>https://github.com/group-robot/java-feishu-robot</url>
+    <url>https://github.com/group-robot/feishu-robot-java</url>
 
     <licenses>
         <license>
@@ -29,14 +29,14 @@
     </developers>
 
     <scm>
-        <connection>scm:git@github.com:group-robot/java-feishu-robot.git</connection>
-        <developerConnection>scm:git@github.com:group-robot/java-feishu-robot.git</developerConnection>
-        <url>https://github.com/group-robot/java-feishu-robot.git</url>
+        <connection>scm:git@github.com:group-robot/feishu-robot-java.git</connection>
+        <developerConnection>scm:git@github.com:group-robot/feishu-robot-java.git</developerConnection>
+        <url>https://github.com/group-robot/feishu-robot-java.git</url>
     </scm>
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/group-robot/java-feishu-robot/issues</url>
+        <url>https://github.com/group-robot/feishu-robot-java/issues</url>
     </issueManagement>
 
     <properties>
